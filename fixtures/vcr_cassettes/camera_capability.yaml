@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/cgi-bin/authLogin.cgi?user=pyqvruser&pwd=IXB5cXZydGVzdDEyMw%3D%3D&serviceKey=1
+  response:
+    body: {string: '<?xml version="1.0" encoding="UTF-8" ?>
+
+        <QDocRoot version="1.0">
+
+        <doQuick><![CDATA[]]></doQuick><is_booting><![CDATA[0]]></is_booting><mediaReady><![CDATA[1]]></mediaReady><shutdown_info><type><![CDATA[-1]]></type><timestamp><![CDATA[0]]></timestamp><duration><![CDATA[0]]></duration></shutdown_info>
+
+        <SMBFW><![CDATA[1]]></SMBFW><authPassed><![CDATA[1]]></authPassed><authSid><![CDATA[1vcja2db]]></authSid><isAdmin><![CDATA[0]]></isAdmin><userid><![CDATA[1002]]></userid><userType><![CDATA[local]]></userType><user_pw_change><![CDATA[1]]></user_pw_change><username><![CDATA[pyqvruser]]></username><groupname><![CDATA[everyone]]></groupname><ts><![CDATA[29664185]]></ts><fwNotice><![CDATA[0]]></fwNotice><title><![CDATA[]]></title><content><![CDATA[]]></content><psType><![CDATA[1]]></psType><standard_massage><![CDATA[]]></standard_massage><standard_color><![CDATA[#ffffff]]></standard_color><standard_size><![CDATA[12px]]></standard_size><standard_bg_style><![CDATA[fill]]></standard_bg_style><showVersion><![CDATA[0]]></showVersion><show_link><![CDATA[1]]></show_link><cuid><![CDATA[ed44fe5dc3244d367fa83c6cc95f40c8]]></cuid></QDocRoot>
+
+        '}
+    headers:
+      Connection: [Keep-Alive]
+      Content-type: [text/xml]
+      Date: ['Tue, 29 Jan 2019 02:26:57 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/qvrpro/camera/capability?sid=1vcja2db&ver=1.1.0&act=get_camera_capability
+  response:
+    body: {string: "{\n\t\"camera_motion\":[\n\t\t{\n\t\t\t\"name\":\"Motion Detection\"\
+        ,\n\t\t\t\"index\":0,\n\t\t\t\"guids\":[\n\n\t\t\t]\n\t\t}\n\t],\n\t\"motion_manual\"\
+        :[\n\n\t],\n\t\"alarm_input\":[\n\t\t{\n\t\t\t\"name\":\"Alarm Input\",\n\t\
+        \t\t\"index\":0,\n\t\t\t\"guids\":[\n\n\t\t\t]\n\t\t},{\n\t\t\t\"name\":\"\
+        Alarm Input\",\n\t\t\t\"index\":1,\n\t\t\t\"guids\":[\n\n\t\t\t]\n\t\t},{\n\
+        \t\t\t\"name\":\"Alarm Input\",\n\t\t\t\"index\":2,\n\t\t\t\"guids\":[\n\n\
+        \t\t\t]\n\t\t},{\n\t\t\t\"name\":\"Alarm Input\",\n\t\t\t\"index\":3,\n\t\t\
+        \t\"guids\":[\n\n\t\t\t]\n\t\t},{\n\t\t\t\"name\":\"Alarm Input\",\n\t\t\t\
+        \"index\":4,\n\t\t\t\"guids\":[\n\n\t\t\t]\n\t\t},{\n\t\t\t\"name\":\"Alarm\
+        \ Input\",\n\t\t\t\"index\":5,\n\t\t\t\"guids\":[\n\n\t\t\t]\n\t\t},{\n\t\t\
+        \t\"name\":\"Alarm Input\",\n\t\t\t\"index\":6,\n\t\t\t\"guids\":[\n\n\t\t\
+        \t]\n\t\t},{\n\t\t\t\"name\":\"Alarm Input\",\n\t\t\t\"index\":7,\n\t\t\t\"\
+        guids\":[\n\n\t\t\t]\n\t\t}\n\t],\n\t\"alarm_input_manual\":[\n\n\t],\n\t\"\
+        alarm_pir\":{\n\t\t\"name\":\"PIR Detection\",\n\t\t\"guids\":[\n\n\t\t]\n\
+        \t},\n\t\"alarm_pir_manual\":[\n\n\t],\n\t\"alarm_output\":[\n\n\t],\n\t\"\
+        iva_crossline_manual\":{\n\t\t\"name\":\"Cross Line\",\n\t\t\"guids\":[\n\n\
+        \t\t]\n\t},\n\t\"iva_audio_detected_manual\":{\n\t\t\"name\":\"Audio Detection\"\
+        ,\n\t\t\"guids\":[\n\n\t\t]\n\t},\n\t\"iva_tampering_detected_manual\":{\n\
+        \t\t\"name\":\"Tampering Detection\",\n\t\t\"guids\":[\n\n\t\t]\n\t},\n\t\"\
+        iva_intrusion_detected\":{\n\t\t\"name\":\"Intrusion Detection\",\n\t\t\"\
+        guids\":[\n\n\t\t]\n\t},\n\t\"iva_intrusion_detected_manual\":{\n\t\t\"name\"\
+        :\"Intrusion Detection Manual\",\n\t\t\"guids\":[\n\n\t\t]\n\t},\n\t\"iva_digital_autotrack_manual\"\
+        :{\n\t\t\"name\":\"Digital Autotracking\",\n\t\t\"guids\":[\n\n\t\t]\n\t},\n\
+        \t\"cameraControl\":[{\n\t\t\"guids\":[\n\t\t{\n\t\t\t\"guid\":\"245EBE362C0A245EBE362C0A245E0000\"\
+        ,\n\t\t\t\"support_preset_points\": false\n\t\t},{\n\t\t\t\"guid\":\"245EBE362C0A245EBE362C0A245E0001\"\
+        ,\n\t\t\t\"support_preset_points\": false\n\t\t},{\n\t\t\t\"guid\":\"245EBE362C0A245EBE362C0A245E0002\"\
+        ,\n\t\t\t\"support_preset_points\": false\n\t\t}\n\t\t]\n\t}]\n}\n"}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Type: [application/json]
+      Date: ['Tue, 29 Jan 2019 02:26:57 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+version: 1

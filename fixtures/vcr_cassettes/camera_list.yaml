@@ -1,0 +1,69 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/cgi-bin/authLogin.cgi?user=pyqvruser&pwd=IXB5cXZydGVzdDEyMw%3D%3D&serviceKey=1
+  response:
+    body: {string: '<?xml version="1.0" encoding="UTF-8" ?>
+
+        <QDocRoot version="1.0">
+
+        <doQuick><![CDATA[]]></doQuick><is_booting><![CDATA[0]]></is_booting><mediaReady><![CDATA[1]]></mediaReady><shutdown_info><type><![CDATA[-1]]></type><timestamp><![CDATA[0]]></timestamp><duration><![CDATA[0]]></duration></shutdown_info>
+
+        <SMBFW><![CDATA[1]]></SMBFW><authPassed><![CDATA[1]]></authPassed><authSid><![CDATA[4gv886u6]]></authSid><isAdmin><![CDATA[0]]></isAdmin><userid><![CDATA[1002]]></userid><userType><![CDATA[local]]></userType><user_pw_change><![CDATA[1]]></user_pw_change><username><![CDATA[pyqvruser]]></username><groupname><![CDATA[everyone]]></groupname><ts><![CDATA[29664185]]></ts><fwNotice><![CDATA[0]]></fwNotice><title><![CDATA[]]></title><content><![CDATA[]]></content><psType><![CDATA[1]]></psType><standard_massage><![CDATA[]]></standard_massage><standard_color><![CDATA[#ffffff]]></standard_color><standard_size><![CDATA[12px]]></standard_size><standard_bg_style><![CDATA[fill]]></standard_bg_style><showVersion><![CDATA[0]]></showVersion><show_link><![CDATA[1]]></show_link><cuid><![CDATA[ed44fe5dc3244d367fa83c6cc95f40c8]]></cuid></QDocRoot>
+
+        '}
+    headers:
+      Connection: [Keep-Alive]
+      Content-type: [text/xml]
+      Date: ['Tue, 29 Jan 2019 02:26:56 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/qvrpro/camera/list?sid=4gv886u6&ver=1.1.0
+  response:
+    body: {string: '{ "datas": [ { "channel_index": 0, "name": "Front Door", "umsid":
+        "0000009600000000", "guid": "245EBE362C0A245EBE362C0A245E0000", "brand": "DoorBird",
+        "model": "D201", "mac": "1C:CA:E3:78:0B:1E", "ver": "", "ip": "10.7.7.9",
+        "port": "80", "video_codec_setting": "H264", "video_resolution_setting": "1280x720",
+        "frame_rate_setting": "10", "video_quality_setting": "Quality 1", "stream_state":
+        [ ], "status": "NVR_CAM_CONNECT_IDLE", "rec_state": "NOT_RECORDING", "rec_state_err_code":
+        0, "frame_rate": "-1", "bit_rate": -1 }, { "channel_index": 1, "name": "Side
+        Entry", "umsid": "0000009600000000", "guid": "245EBE362C0A245EBE362C0A245E0001",
+        "brand": "DoorBird", "model": "D201", "mac": "1C:CA:E3:78:24:C6", "ver": "",
+        "ip": "10.7.7.7", "port": "80", "video_codec_setting": "H264", "video_resolution_setting":
+        "1280x720", "frame_rate_setting": "10", "video_quality_setting": "Quality
+        1", "stream_state": [ ], "status": "NVR_CAM_CONNECT_IDLE", "rec_state": "NOT_RECORDING",
+        "rec_state_err_code": 0, "frame_rate": "-1", "bit_rate": -1 }, { "channel_index":
+        2, "name": "Back Door", "umsid": "0000009600000000", "guid": "245EBE362C0A245EBE362C0A245E0002",
+        "brand": "DoorBird", "model": "D201", "mac": "1C:CA:E3:78:2A:48", "ver": "",
+        "ip": "10.7.7.10", "port": "80", "video_codec_setting": "H264", "video_resolution_setting":
+        "1280x720", "frame_rate_setting": "10", "video_quality_setting": "Quality
+        1", "stream_state": [ ], "status": "NVR_CAM_CONNECT_IDLE", "rec_state": "NOT_RECORDING",
+        "rec_state_err_code": 0, "frame_rate": "-1", "bit_rate": -1 } ], "success":
+        "true", "total_channel_num": 3 }'}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Type: [application/json]
+      Date: ['Tue, 29 Jan 2019 02:26:56 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+version: 1

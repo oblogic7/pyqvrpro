@@ -1,0 +1,146 @@
+import base64
+import requests
+import untangle
+
+API_VERSION = '1.1.0'
+
+
+class Client(object):
+    def __init__(self, user, password, host, protocol='http', port=8080):
+        """Initialize QVR client."""
+
+        self._user = user
+        self._password = password
+        self._host = host
+        self._protocol = protocol
+        self._port = port
+        self._authenticated = False
+        self._session_id = None
+
+        self.connect()
+
+    def connect(self):
+        """Login to QVR Pro."""
+
+        login_url = self._get_endpoint_url('/cgi-bin/authLogin.cgi')
+
+        params = {
+            'user': self._user,
+            'pwd': base64.b64encode(self._password.encode('ascii')),
+            'serviceKey': 1
+        }
+
+        response = requests.get(login_url, params=params)
+
+        responseobj = untangle.parse(
+            response.content.decode(response.encoding)).QDocRoot
+
+        self._authenticated = bool(responseobj.authPassed.cdata)
+
+        if not self.authenticated:
+            raise AuthenticationError('Authentication failed.')
+
+        self._session_id = responseobj.authSid.cdata
+
+    def list_cameras(self):
+        """Get a list of configured cameras."""
+
+        return self._get('/qvrpro/camera/list')
+
+    def get_capability(self, ptz=False):
+        """Get camera capability."""
+
+        capability = 'get_camera_capability' if ptz else 'get_event_capability'
+
+        params = {
+            'act': capability
+        }
+
+        return self._get('/qvrpro/camera/capability', params)
+
+    def get_snapshot(self, camera_guid):
+        """Get a snapshot from specified camera."""
+
+        return self._get('/qvrpro/camera/snapshot/{}'.format(camera_guid))
+
+    def get_channel_list(self):
+        """Get a list of available channels."""
+
+        return self._get('/qvrpro/qshare/StreamingOutput/channels')
+
+    def get_channel_streams(self, guid):
+        """Get streams for a specific channel."""
+        url = '/qvrpro/qshare/StreamingOutput/channel/{}/streams'.format(
+            guid)
+
+        return self._get(url)
+
+    def get_channel_live_stream(self, guid, stream=0, protocol='hls'):
+        """Get a live stream for a specific channel."""
+        url = '/qvrpro/qshare/StreamingOutput' \
+              '/channel/{}/stream/{}/liveStream'.format(guid, stream)
+
+        body = {
+            'protocol': protocol
+        }
+
+        return self._post(url, json=body)
+
+    def _parse_response(self, resp):
+        """Return response depending on content type."""
+        content_type = resp.headers['content-type']
+
+        if content_type == 'application/json':
+            return resp.json()
+
+        if content_type == 'image/jpeg':
+            return resp.content
+
+        return resp
+
+    def _get(self, uri, params=None):
+        """Perform GET request"""
+
+        params = params or {}
+
+        default_params = {
+            'sid': self._session_id,
+            'ver': API_VERSION,
+        }
+
+        url = self._get_endpoint_url(uri)
+
+        resp = requests.get(url, {**default_params, **params})
+
+        return self._parse_response(resp)
+
+    def _post(self, uri, json):
+        """Do POST request."""
+        params = {
+            'sid': self._session_id,
+        }
+
+        url = self._get_endpoint_url(uri)
+
+        resp = requests.post(url, json=json, params=params)
+
+        return self._parse_response(resp)
+
+    def _get_endpoint_url(self, uri):
+        """Get endpoint url."""
+        return '{}{}'.format(self._base_url, uri)
+
+    @property
+    def authenticated(self):
+        """Get authentication status."""
+        return self._authenticated
+
+    @property
+    def _base_url(self):
+        """Get API base URL."""
+        return '{}://{}:{}'.format(self._protocol, self._host, self._port)
+
+
+class AuthenticationError(ConnectionError):
+    def __init__(self, msg):
+        super(AuthenticationError, self).__init__(msg=msg)

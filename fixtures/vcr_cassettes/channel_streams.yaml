@@ -1,0 +1,81 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/cgi-bin/authLogin.cgi?user=pyqvruser&pwd=IXB5cXZydGVzdDEyMw%3D%3D&serviceKey=1
+  response:
+    body: {string: '<?xml version="1.0" encoding="UTF-8" ?>
+
+        <QDocRoot version="1.0">
+
+        <doQuick><![CDATA[]]></doQuick><is_booting><![CDATA[0]]></is_booting><mediaReady><![CDATA[1]]></mediaReady><shutdown_info><type><![CDATA[-1]]></type><timestamp><![CDATA[0]]></timestamp><duration><![CDATA[0]]></duration></shutdown_info>
+
+        <SMBFW><![CDATA[1]]></SMBFW><authPassed><![CDATA[1]]></authPassed><authSid><![CDATA[snmqyaas]]></authSid><isAdmin><![CDATA[0]]></isAdmin><userid><![CDATA[1002]]></userid><userType><![CDATA[local]]></userType><user_pw_change><![CDATA[1]]></user_pw_change><username><![CDATA[pyqvruser]]></username><groupname><![CDATA[everyone]]></groupname><ts><![CDATA[29664185]]></ts><fwNotice><![CDATA[0]]></fwNotice><title><![CDATA[]]></title><content><![CDATA[]]></content><psType><![CDATA[1]]></psType><standard_massage><![CDATA[]]></standard_massage><standard_color><![CDATA[#ffffff]]></standard_color><standard_size><![CDATA[12px]]></standard_size><standard_bg_style><![CDATA[fill]]></standard_bg_style><showVersion><![CDATA[0]]></showVersion><show_link><![CDATA[1]]></show_link><cuid><![CDATA[ed44fe5dc3244d367fa83c6cc95f40c8]]></cuid></QDocRoot>
+
+        '}
+    headers:
+      Connection: [Keep-Alive]
+      Content-type: [text/xml]
+      Date: ['Tue, 29 Jan 2019 02:27:01 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/qvrpro/qshare/StreamingOutput/channels?sid=snmqyaas&ver=1.1.0
+  response:
+    body: {string: "{\n\t\"respType\": \"StreamingOutput#channels\",\n\t\"total_channel_num\"\
+        : 8,\n\t\"used_channel_num\": 3,\n\t\"channels\": [\n\t{\n\t\t\"channel_index\"\
+        :0,\n\t\t\"name\":\"Front Door\",\n\t\t\"guid\":\"245EBE362C0A245EBE362C0A245E0000\"\
+        ,\n\t\t\"brand\":\"DoorBird\",\n\t\t\"model\":\"D201\"\n\t},\n\t{\n\t\t\"\
+        channel_index\":1,\n\t\t\"name\":\"Side Entry\",\n\t\t\"guid\":\"245EBE362C0A245EBE362C0A245E0001\"\
+        ,\n\t\t\"brand\":\"DoorBird\",\n\t\t\"model\":\"D201\"\n\t},\n\t{\n\t\t\"\
+        channel_index\":2,\n\t\t\"name\":\"Back Door\",\n\t\t\"guid\":\"245EBE362C0A245EBE362C0A245E0002\"\
+        ,\n\t\t\"brand\":\"DoorBird\",\n\t\t\"model\":\"D201\"\n\t}]\n}\n"}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Type: [application/json]
+      Date: ['Tue, 29 Jan 2019 02:27:01 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: http://10.7.7.100:8080/qvrpro/qshare/StreamingOutput/channel/245EBE362C0A245EBE362C0A245E0000/streams?sid=snmqyaas&ver=1.1.0
+  response:
+    body: {string: "{\n\t\"respType\": \"StreamingOutput#streams\",\n\t\"channelIndex\"\
+        : 0,\n\t\"guid\": \"245EBE362C0A245EBE362C0A245E0000\",\n\t\"streams\": [\n\
+        \t\t{\n\t\t\t\"stream\": 0,\n\t\t\t\"status\":\"NVR_CAM_CONNECTED\",\n\t\t\
+        \t\"videoCodec\":\"H264\",\n\t\t\t\"quality\":\"\",\n\t\t\t\"resolution\"\
+        :\"1280x720\",\n\t\t\t\"frameRate\":\"\"\n\t\t}\n\t]\n}\n"}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Type: [application/json]
+      Date: ['Tue, 29 Jan 2019 02:27:01 GMT']
+      Keep-Alive: ['timeout=15, max=800']
+      Server: [Apache]
+      Transfer-Encoding: [chunked]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+version: 1
