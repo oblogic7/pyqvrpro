@@ -1,2 +1,6 @@
 .idea/
 venv/
+.pytest_cache/
+build/
+dist/
+pyqvrpro.egg-info/
