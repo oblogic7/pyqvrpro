@@ -17,7 +17,7 @@ DESCRIPTION = 'QVR Pro API wrapper.'
 URL = 'https://github.com/oblogic7/pyqvrpro'
 EMAIL = 'matt@obscurelogic.com'
 AUTHOR = 'Matt Snyder'
-REQUIRES_PYTHON = '>=3.6.0'
+REQUIRES_PYTHON = '>=3.5.0'
 VERSION = 0.40
 
 # What packages are required for this module to be executed?
