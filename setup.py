@@ -22,7 +22,7 @@ VERSION = 0.41
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'pyyaml', 'requests'
+    'pyyaml', 'requests', 'untangle'
 ]
 
 # What packages are optional?
