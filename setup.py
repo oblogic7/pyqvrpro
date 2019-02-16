@@ -18,7 +18,7 @@ URL = 'https://github.com/oblogic7/pyqvrpro'
 EMAIL = 'matt@obscurelogic.com'
 AUTHOR = 'Matt Snyder'
 REQUIRES_PYTHON = '>=3.5.0'
-VERSION = 0.42
+VERSION = 0.43
 
 # What packages are required for this module to be executed?
 REQUIRED = [
