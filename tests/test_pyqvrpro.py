@@ -1,4 +1,6 @@
-from pyqvrpro import Client as qvrpro
+from pyqvrpro.client import Client as qvrpro
+from pyqvrpro.client import AuthenticationError
+import pytest
 import vcr
 
 
@@ -13,6 +15,14 @@ def test_login():
     instance = _get_instance()
 
     assert instance.authenticated is True
+
+@vcr.use_cassette('fixtures/vcr_cassettes/invalid_auth.yaml')
+def test_invalid_auth():
+    """Test invalid auth"""
+
+    with pytest.raises(AuthenticationError):
+        qvrpro('pyqvruser', 'invalidpw', '10.7.7.100')
+
 
 
 @vcr.use_cassette('fixtures/vcr_cassettes/camera_list.yaml')

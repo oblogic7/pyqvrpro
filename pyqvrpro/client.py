@@ -35,10 +35,10 @@ class Client(object):
         responseobj = untangle.parse(
             response.content.decode(response.encoding)).QDocRoot
 
-        self._authenticated = bool(responseobj.authPassed.cdata)
+        self._authenticated = bool(int(responseobj.authPassed.cdata))
 
         if not self.authenticated:
-            raise AuthenticationError('Authentication failed.')
+            raise AuthenticationError(msg='Authentication failed.')
 
         self._session_id = responseobj.authSid.cdata
 
@@ -143,4 +143,4 @@ class Client(object):
 
 class AuthenticationError(ConnectionError):
     def __init__(self, msg):
-        super(AuthenticationError, self).__init__(msg=msg)
+        super(AuthenticationError, self).__init__({msg: msg})
