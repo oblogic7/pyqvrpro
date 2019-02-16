@@ -16,13 +16,13 @@ def test_login():
 
     assert instance.authenticated is True
 
+
 @vcr.use_cassette('fixtures/vcr_cassettes/invalid_auth.yaml')
 def test_invalid_auth():
     """Test invalid auth"""
 
     with pytest.raises(AuthenticationError):
         qvrpro('pyqvruser', 'invalidpw', '10.7.7.100')
-
 
 
 @vcr.use_cassette('fixtures/vcr_cassettes/camera_list.yaml')
@@ -128,3 +128,27 @@ def test_get_channel_live_stream():
 
     assert set(expected_keys).issubset(response.keys())
     assert response['guid'] == guid
+
+@vcr.use_cassette('fixtures/vcr_cassettes/start_recording.yaml')
+def test_start_recording():
+    instance = _get_instance()
+
+    channels = instance.get_channel_list()
+
+    guid = channels['channels'][0]['guid']
+
+    response = instance.start_recording(guid)
+
+    assert response['success'] is True
+
+@vcr.use_cassette('fixtures/vcr_cassettes/stop_recording.yaml')
+def test_stop_recording():
+    instance = _get_instance()
+
+    channels = instance.get_channel_list()
+
+    guid = channels['channels'][0]['guid']
+
+    response = instance.start_recording(guid)
+
+    assert response['success'] is True

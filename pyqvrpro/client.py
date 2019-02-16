@@ -86,6 +86,18 @@ class Client(object):
 
         return self._post(url, json=body)
 
+    def start_recording(self, guid):
+        """Start recording a specific channel."""
+        url = '/qvrpro/camera/mrec/{}/start'.format(guid)
+
+        return self._put(url)
+
+    def stop_recording(self, guid):
+        """Start recording a specific channel."""
+        url = '/qvrpro/camera/mrec/{}/stop'.format(guid)
+
+        return self._put(url)
+
     def _parse_response(self, resp):
         """Return response depending on content type."""
         content_type = resp.headers['content-type']
@@ -123,6 +135,19 @@ class Client(object):
         url = self._get_endpoint_url(uri)
 
         resp = requests.post(url, json=json, params=params)
+
+        return self._parse_response(resp)
+
+    def _put(self, uri):
+        """Do POST request."""
+        params = {
+            'sid': self._session_id,
+            'ver': API_VERSION,
+        }
+
+        url = self._get_endpoint_url(uri)
+
+        resp = requests.put(url, params=params)
 
         return self._parse_response(resp)
 
