@@ -149,6 +149,6 @@ def test_stop_recording():
 
     guid = channels['channels'][0]['guid']
 
-    response = instance.start_recording(guid)
+    response = instance.stop_recording(guid)
 
     assert response['success'] is True

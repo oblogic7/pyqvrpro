@@ -7,7 +7,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.21.0]
     method: GET
-    uri: http://10.7.7.100:8080/cgi-bin/authLogin.cgi?user=pyqvruser&serviceKey=1&pwd=IXB5cXZydGVzdDEyMw%3D%3D
+    uri: http://10.7.7.100:8080/cgi-bin/authLogin.cgi?user=pyqvruser&pwd=IXB5cXZydGVzdDEyMw%3D%3D&serviceKey=1
   response:
     body: {string: '<?xml version="1.0" encoding="UTF-8" ?>
 
@@ -15,13 +15,13 @@ interactions:
 
         <doQuick><![CDATA[]]></doQuick><is_booting><![CDATA[0]]></is_booting><mediaReady><![CDATA[1]]></mediaReady><shutdown_info><type><![CDATA[-1]]></type><timestamp><![CDATA[0]]></timestamp><duration><![CDATA[0]]></duration></shutdown_info>
 
-        <SMBFW><![CDATA[1]]></SMBFW><authPassed><![CDATA[1]]></authPassed><authSid><![CDATA[9wy583l7]]></authSid><isAdmin><![CDATA[0]]></isAdmin><userid><![CDATA[1002]]></userid><userType><![CDATA[local]]></userType><user_pw_change><![CDATA[1]]></user_pw_change><username><![CDATA[pyqvruser]]></username><groupname><![CDATA[everyone]]></groupname><ts><![CDATA[29664185]]></ts><fwNotice><![CDATA[0]]></fwNotice><title><![CDATA[]]></title><content><![CDATA[]]></content><psType><![CDATA[1]]></psType><standard_massage><![CDATA[]]></standard_massage><standard_color><![CDATA[#ffffff]]></standard_color><standard_size><![CDATA[12px]]></standard_size><standard_bg_style><![CDATA[fill]]></standard_bg_style><showVersion><![CDATA[0]]></showVersion><show_link><![CDATA[1]]></show_link><cuid><![CDATA[ed44fe5dc3244d367fa83c6cc95f40c8]]></cuid></QDocRoot>
+        <SMBFW><![CDATA[1]]></SMBFW><authPassed><![CDATA[1]]></authPassed><authSid><![CDATA[43rco62r]]></authSid><isAdmin><![CDATA[0]]></isAdmin><userid><![CDATA[1002]]></userid><userType><![CDATA[local]]></userType><user_pw_change><![CDATA[1]]></user_pw_change><username><![CDATA[pyqvruser]]></username><groupname><![CDATA[everyone]]></groupname><ts><![CDATA[29664185]]></ts><fwNotice><![CDATA[0]]></fwNotice><title><![CDATA[]]></title><content><![CDATA[]]></content><psType><![CDATA[1]]></psType><standard_massage><![CDATA[]]></standard_massage><standard_color><![CDATA[#ffffff]]></standard_color><standard_size><![CDATA[12px]]></standard_size><standard_bg_style><![CDATA[fill]]></standard_bg_style><showVersion><![CDATA[0]]></showVersion><show_link><![CDATA[1]]></show_link><cuid><![CDATA[ed44fe5dc3244d367fa83c6cc95f40c8]]></cuid></QDocRoot>
 
 '}
     headers:
       Connection: [Keep-Alive]
       Content-type: [text/xml]
-      Date: ['Sat, 16 Feb 2019 05:41:40 GMT']
+      Date: ['Wed, 20 Feb 2019 00:48:23 GMT']
       Keep-Alive: ['timeout=15, max=800']
       Server: [Apache]
       Transfer-Encoding: [chunked]
@@ -35,7 +35,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.21.0]
     method: GET
-    uri: http://10.7.7.100:8080/qvrpro/qshare/StreamingOutput/channels?sid=9wy583l7&ver=1.1.0
+    uri: http://10.7.7.100:8080/qvrpro/qshare/StreamingOutput/channels?sid=43rco62r&ver=1.1.0
   response:
     body: {string: "{\n\t\"respType\": \"StreamingOutput#channels\",\n\t\"total_channel_num\":
         8,\n\t\"used_channel_num\": 3,\n\t\"channels\": [\n\t{\n\t\t\"channel_index\":0,\n\t\t\"name\":\"Front
@@ -45,7 +45,7 @@ interactions:
     headers:
       Connection: [Keep-Alive]
       Content-Type: [application/json]
-      Date: ['Sat, 16 Feb 2019 05:41:40 GMT']
+      Date: ['Wed, 20 Feb 2019 00:48:23 GMT']
       Keep-Alive: ['timeout=15, max=800']
       Server: [Apache]
       Transfer-Encoding: [chunked]
@@ -60,7 +60,7 @@ interactions:
       Content-Length: ['0']
       User-Agent: [python-requests/2.21.0]
     method: PUT
-    uri: http://10.7.7.100:8080/qvrpro/camera/mrec/245EBE362C0A245EBE362C0A245E0000/start?ver=1.1.0&sid=9wy583l7
+    uri: http://10.7.7.100:8080/qvrpro/camera/mrec/245EBE362C0A245EBE362C0A245E0000/stop?sid=43rco62r&ver=1.1.0
   response:
     body: {string: '{
 
@@ -72,7 +72,7 @@ interactions:
     headers:
       Connection: [Keep-Alive]
       Content-Type: [application/json]
-      Date: ['Sat, 16 Feb 2019 05:41:40 GMT']
+      Date: ['Wed, 20 Feb 2019 00:48:23 GMT']
       Keep-Alive: ['timeout=15, max=800']
       Server: [Apache]
       Transfer-Encoding: [chunked]
