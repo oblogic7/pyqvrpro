@@ -66,7 +66,12 @@ class Client(object):
     def get_channel_list(self):
         """Get a list of available channels."""
 
-        return self._get('/qvrpro/qshare/StreamingOutput/channels')
+        resp = self._get('/qvrpro/qshare/StreamingOutput/channels')
+
+        if "message" in resp.keys():
+            if resp["message"] == "Insufficient permission.":
+                raise InsufficientPermissionsError(
+                    "User must have Surveillance Management permission")
 
     def get_channel_streams(self, guid):
         """Get streams for a specific channel."""
@@ -167,5 +172,10 @@ class Client(object):
 
 
 class AuthenticationError(ConnectionError):
+    def __init__(self, msg):
+        super(AuthenticationError, self).__init__({msg: msg})
+
+
+class InsufficientPermissionsError(AuthenticationError):
     def __init__(self, msg):
         super(AuthenticationError, self).__init__({msg: msg})
