@@ -73,6 +73,8 @@ class Client(object):
                 raise InsufficientPermissionsError(
                     "User must have Surveillance Management permission")
 
+        return resp
+
     def get_channel_streams(self, guid):
         """Get streams for a specific channel."""
         url = '/qvrpro/qshare/StreamingOutput/channel/{}/streams'.format(
