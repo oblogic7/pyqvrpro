@@ -4,7 +4,6 @@ certifi==2018.11.29
 chardet==3.0.4
 idna==2.8
 more-itertools==5.0.0
-multidict==4.5.2
 pathlib2==2.3.3
 pluggy==0.8.1
 py==1.7.0
