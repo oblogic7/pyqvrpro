@@ -110,6 +110,11 @@ class Client(object):
         content_type = resp.headers['content-type']
 
         if content_type == 'application/json':
+            if (not resp.ok):
+                """Error response returns malformed json so we can't get
+                    the actual error message."""
+                raise QVRResponseError(resp.content.decode('UTF-8'))
+
             return resp.json()
 
         if content_type == 'image/jpeg':
@@ -175,9 +180,14 @@ class Client(object):
 
 class AuthenticationError(ConnectionError):
     def __init__(self, msg):
-        super(AuthenticationError, self).__init__({msg: msg})
+        super().__init__({msg: msg})
 
 
 class InsufficientPermissionsError(AuthenticationError):
     def __init__(self, msg):
-        super(AuthenticationError, self).__init__({msg: msg})
+        super().__init__({msg: msg})
+
+
+class QVRResponseError(ConnectionError):
+    def __init__(self, msg):
+        super().__init__({msg: msg})
