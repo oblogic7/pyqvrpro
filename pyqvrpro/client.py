@@ -42,6 +42,11 @@ class Client(object):
 
         self._session_id = responseobj.authSid.cdata
 
+    def get_auth_string(self):
+        """Get user and password as auth string for url."""
+
+        return f"{self._user}:{self._password}"
+
     def list_cameras(self):
         """Get a list of configured cameras."""
 
