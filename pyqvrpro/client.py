@@ -112,12 +112,17 @@ class Client(object):
 
     def _parse_response(self, resp):
         """Return response depending on content type."""
+        if not resp.ok:
+            self._authenticated = False
+            raise QVRResponseError(resp.content.decode('UTF-8'))
+
         content_type = resp.headers['content-type']
 
         if content_type == 'application/json':
             if (not resp.ok):
                 """Error response returns malformed json so we can't get
                     the actual error message."""
+                self._authenticated = False
                 raise QVRResponseError(resp.content.decode('UTF-8'))
 
             return resp.json()
