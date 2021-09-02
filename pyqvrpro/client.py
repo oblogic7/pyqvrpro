@@ -16,12 +16,23 @@ class Client(object):
         self._port = port
         self._authenticated = False
         self._session_id = None
+        self._qvrpro_uri = '/qvrpro'
 
         self.connect()
+
+    def _is_qvrpro(self):
+        entry_url = self._get_endpoint_url('/qvrentry')
+        response = requests.get(entry_url)
+        responseobj = response.json()
+        if responseobj.get('is_qvp', '') == 'no':
+            self._qvrpro_uri = '/qvrelite'
+        else:
+            self._qvrpro_uri = '/qvrpro'
 
     def connect(self):
         """Login to QVR Pro."""
 
+        self._is_qvrpro()
         login_url = self._get_endpoint_url('/cgi-bin/authLogin.cgi')
 
         params = {
@@ -50,7 +61,7 @@ class Client(object):
     def list_cameras(self):
         """Get a list of configured cameras."""
 
-        return self._get('/qvrpro/camera/list')
+        return self._get(f'{self._qvrpro_uri}/camera/list')
 
     def get_capability(self, ptz=False):
         """Get camera capability."""
@@ -61,17 +72,17 @@ class Client(object):
             'act': capability
         }
 
-        return self._get('/qvrpro/camera/capability', params)
+        return self._get(f'{self._qvrpro_uri}/camera/capability', params)
 
     def get_snapshot(self, camera_guid):
         """Get a snapshot from specified camera."""
 
-        return self._get('/qvrpro/camera/snapshot/{}'.format(camera_guid))
+        return self._get(f'{self._qvrpro_uri}/camera/snapshot/{camera_guid}')
 
     def get_channel_list(self):
         """Get a list of available channels."""
 
-        resp = self._get('/qvrpro/qshare/StreamingOutput/channels')
+        resp = self._get(f'{self._qvrpro_uri}/qshare/StreamingOutput/channels')
 
         if "message" in resp.keys():
             if resp["message"] == "Insufficient permission.":
@@ -82,15 +93,14 @@ class Client(object):
 
     def get_channel_streams(self, guid):
         """Get streams for a specific channel."""
-        url = '/qvrpro/qshare/StreamingOutput/channel/{}/streams'.format(
-            guid)
+        url = f'{self._qvrpro_uri}/qshare/StreamingOutput/channel/{guid}/streams'
 
         return self._get(url)
 
     def get_channel_live_stream(self, guid, stream=0, protocol='hls'):
         """Get a live stream for a specific channel."""
-        url = '/qvrpro/qshare/StreamingOutput' \
-              '/channel/{}/stream/{}/liveStream'.format(guid, stream)
+        url = f'{self._qvrpro_uri}/qshare/StreamingOutput' \
+              f'/channel/{guid}/stream/{stream}/liveStream'
 
         body = {
             'protocol': protocol
@@ -100,13 +110,13 @@ class Client(object):
 
     def start_recording(self, guid):
         """Start recording a specific channel."""
-        url = '/qvrpro/camera/mrec/{}/start'.format(guid)
+        url = f'{self._qvrpro_uri}/camera/mrec/{guid}/start'
 
         return self._put(url)
 
     def stop_recording(self, guid):
         """Start recording a specific channel."""
-        url = '/qvrpro/camera/mrec/{}/stop'.format(guid)
+        url = f'{self._qvrpro_uri}/camera/mrec/{guid}/stop'
 
         return self._put(url)
 
