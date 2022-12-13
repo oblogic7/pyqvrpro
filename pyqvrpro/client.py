@@ -110,6 +110,20 @@ class Client(object):
 
         return self._put(url)
 
+    def get_recording(self, timestamp, camera_guid, channel_id=0, pre_period=10000, post_period=0):
+        """
+            Get a recording from specified camera. 
+            Timestamp in UTC time
+            pre and post period in miliseconds
+        """
+        url = '/qvrpro/camera/recordingfile/{}/{}'.format(camera_guid, channel_id)
+        params = {
+            "time": timestamp,
+            "post_period": post_period,
+            "pre_period": pre_period
+        }
+        return self._get(url, params)
+
     def _parse_response(self, resp):
         """Return response depending on content type."""
         if not resp.ok:
