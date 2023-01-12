@@ -6,7 +6,7 @@ API_VERSION = '1.1.0'
 
 
 class Client(object):
-    def __init__(self, user, password, host, protocol='http', port=8080):
+    def __init__(self, user, password, host, protocol='http', port=8080, sslverify=True):
         """Initialize QVR client."""
 
         self._user = user
@@ -14,8 +14,10 @@ class Client(object):
         self._host = host
         self._protocol = protocol
         self._port = port
+        self._sslverify = sslverify
         self._authenticated = False
         self._session_id = None
+        
 
         self.connect()
 
@@ -27,7 +29,8 @@ class Client(object):
         params = {
             'user': self._user,
             'pwd': base64.b64encode(self._password.encode('ascii')),
-            'serviceKey': 1
+            'serviceKey': 1,
+            'verify': self._sslverify
         }
 
         response = requests.get(login_url, params=params)
